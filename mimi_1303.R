@@ -9,7 +9,7 @@ library(StatMatch)
 file.choose()
 
 
-path <- "C:\\Users\\nuria\\Downloads\\Austin Bicycle Crashes 2010-2017.xlsx"
+path <- "C:\\Users\\user\\Downloads\\Austin Bicycle Crashes 2010-2017.xlsx"
 data <- read_excel(path)
 #uncompleteVar <- function(vector){any(is.na(vector))}
   # millor utilitzar complete.cases()
