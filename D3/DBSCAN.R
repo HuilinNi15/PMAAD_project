@@ -8,7 +8,7 @@ library(ggplot2)
 library(factoextra)
 library(dbscan)
 
-df <- 'D:/PMAAD_project/cleaned_db.csv'
+df <- './cleaned_db.csv'
 data <- read.csv(df)
 # View(data)
 nrow(data)
