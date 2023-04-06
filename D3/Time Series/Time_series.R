@@ -41,6 +41,8 @@ df$Crash_Date <- as.Date(df$Crash_Date)
 monthly_counts <- aggregate(list(count = df$Crash_Month),
                   by = list(year = df$Crash_Year, month = df$Crash_Month),
                   length)
+monthly_counts <- monthly_counts[order(monthly_counts$year), ]
+monthly_counts
 
 timeseries <- ts(monthly_counts[3], start = c(2013, 1),
                  end = c(2023, 3), frequency = 12)
@@ -62,6 +64,22 @@ lapply(subset_list, function(subset) autoplot(subset) + ggtitle("Accidents in Au
 ggseasonplot(timeseries, main = "Seasonal Plot: Stackoverflow Questions Count")
 
 # - - - - - - - - MONTHLY ACCIDENTS - - - - - - - - -
+
+
+# - - - - - - - - DAY OF WEEk - - - - - - - - -
+
+days <- c("MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY")
+day_of_week <- data.frame()
+
+for (i in days) {
+  day <- data.frame(Day=i, sum=sum(df$Day_of_Week == i))
+  day_of_week <- rbind(day_of_week, day)
+}
+
+day_of_week_timeseries <- ts(day_of_week, start = c(0), end = c(7), frequency = 1)
+autoplot(day_of_week_timeseries, x="Day") + ggtitle("Accidents in Austin, Texas") + ylab("Number of accidents")
+
+# - - - - - - - - DAY OF WEEk - - - - - - - - -
 
 
 # - - - - - - - - TRANSFORMING DATASET - - - - - - - - -
