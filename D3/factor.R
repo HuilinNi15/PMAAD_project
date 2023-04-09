@@ -24,4 +24,3 @@ df2$Person_Helmet <- as.factor(df2$Person_Helmet)
 df2$Person_Injury_Severity <- as.factor(df2$Person_Injury_Severity)
 df2$injuries_report <- as.factor(df2$injuries_report)
 df2$`$1000_Damage_to_Any_One_Person's_Property` <- as.factor(df2$`$1000_Damage_to_Any_One_Person's_Property`)
-

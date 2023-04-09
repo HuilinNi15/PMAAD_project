@@ -25,12 +25,12 @@ library(doParallel)
 library(foreach)
 library(readr)
 
-df <- read_csv("~/GIA/4sem/PMAAD/Scripts/DadesMimmi.csv")
+df <- read.csv("./Datasets/cleaned_db.csv")
 attach(df)
 df2 <- subset(df, select = -c(Crash_ID, Crash_Year, Crash_Time, Crash_Month, Crash_Date, Hour_of_Day, Charge))
 
 classes <- sapply(df2, class)
-num <- names(classes)[which(classes == "numeric")]
+num <- names(classes)[which(classes == "integer")]
 datos <- subset(df2, select = num)
 datos_norm <- data.frame(lapply(datos, scales::rescale))
 
@@ -75,3 +75,5 @@ plot(eps_values, silhouette_avg, type = "b", pch = 20, main = "Silhouette Plot")
 
 opt_eps <- eps_values[which.max(silhouette_avg)]
 abline(v = opt_eps, lty = 2, col = "red")
+
+
